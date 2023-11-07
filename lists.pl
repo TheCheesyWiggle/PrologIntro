@@ -20,10 +20,17 @@ reverse_list([X|XS],W) :-
     reverse_list(XS,V),
     append(V, [X], W).
     
+insert_list(E,[],[E]).
+insert_list(E,[X|XS], [E,X|XS]):-
+    E < X.
+insert_list(E,[X|XS], [X|V]):-
+    E>=X,
+    insert_list(E,XS,V).
     
 
 main :-
     %sum_list([2,3,5,6],X), write(X),
-	%max_list([2,3,5,6],X), write(X),
+    %max_list([2,3,5,6],X), write(X),
     %member_list(d, [a,b,c,d,e]),
-    reverse_list([2,3,4,5,6],X),write(X).
+    %reverse_list([2,3,4,5,6],X),write(X),
+    insert_list(7,[2,3,4,5,6],X),write(X).
